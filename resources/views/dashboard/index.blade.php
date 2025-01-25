@@ -3,7 +3,7 @@
     @session('success')
         <div class="alert alert-notify alert-secondary alert-dismissible fade show" role="alert">
             <span data-notify="icon" class="fas fa-user-alt"></span>
-            <span data-notify="title" class="text-secondary">Hi! {{ auth()->user()->name }}. </span>
+            <span data-notify="title" class="text-secondary">Hi! {{ auth()->user()->nama_user }}. </span>
             <span data-notify="message">{{ $value }}</span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -115,7 +115,7 @@
                             @foreach ($barangs as $index => $item)
                                 <tr>
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
-                                    <td width="80" class="text-center">{{ $item->unique_id }}</td>
+                                    <td width="80" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200">{{ $item->nama_barang }}</td>
                                     <td width="70" class="text-right">
                                         <span class="badge badge-warning">{{ $item->stok }}</span>

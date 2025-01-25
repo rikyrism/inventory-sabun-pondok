@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label>ID Barang <span class="text-danger">*</span></label>
                                 <!-- tampilkan "id_barang" -->
-                                <input type="text" name="unique_id" class="form-control" value="{{ $unique_id }}" readonly>
+                                <input type="text" name="id_barang" class="form-control" value="{{ $unique_id }}" readonly>
                             </div>
 
                             <div class="form-group">

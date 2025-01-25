@@ -42,7 +42,7 @@
                                 <tr>
                                     <td width="120">ID Barang</td>
                                     <td width="10">:</td>
-                                    <td>{{ $barang->unique_id }}</td>
+                                    <td>{{ $barang->id_barang }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nama Barang</td>

@@ -22,8 +22,8 @@ class BarangMasukStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unique_id' => ['nullable', 'string', 'min:1', 'max:255'],
-            'barang_id' => ['required', 'exists:barangs,id'],
+            'id_masuk' => ['nullable', 'string', 'min:1', 'max:255'],
+            'barang' => ['required', 'exists:tbl_barang,id_barang'],
             'tanggal' => ['required', 'date'],
             'jumlah' => ['required', 'integer', 'min:-2147483648', 'max:2147483647']
         ];

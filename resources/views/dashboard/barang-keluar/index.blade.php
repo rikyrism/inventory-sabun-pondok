@@ -72,22 +72,22 @@
                             @foreach ($barang_keluars as $index => $item)
                                 <tr>
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
-                                    <td width="100" class="text-center">{{ $item->unique_id }}</td>
+                                    <td width="100" class="text-center">{{ $item->id_keluar }}</td>
                                     <td width="200" class="text-center">{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
-                                    <td width="200" class="text-center">{{ $item->barang->unique_id }} - {{ $item->barang->nama_barang }}</td>
+                                    <td width="200" class="text-center">{{ $item->barangTable->id_barang }} - {{ $item->barangTable->nama_barang }}</td>
                                     <td width="100" class="text-center">{{ $item->jumlah }}</td>
-                                    <td width="100" class="text-center">{{ $item->barang->satuan }}</td>
+                                    <td width="100" class="text-center">{{ $item->barangTable->satuan }}</td>
                                     <td width="100" class="text-center">
                                         <div>
                                             <!-- tombol hapus data -->
-                                            <form action="{{ route('barang-keluar.destroy', $item->id) }}" method="POST" style="display:none;">
+                                            <form action="{{ route('barang-keluar.destroy', $item->id_keluar) }}" method="POST" style="display:none;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id}}">Delete</button>
+                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id_keluar}}">Delete</button>
                                             </form>
 
                                             <a href="#"
-                                                onclick="if (confirm('Anda yakin ingin menghapus data barang keluar {{ $item->barang->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id}}').click(); }"
+                                                onclick="if (confirm('Anda yakin ingin menghapus data barang keluar {{ $item->barangTable->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id_keluar}}').click(); }"
                                                 class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Hapus"
                                             >

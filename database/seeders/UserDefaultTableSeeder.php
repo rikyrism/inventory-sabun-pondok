@@ -14,16 +14,16 @@ class UserDefaultTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Administrator',
-            'email' => 'administrator@gmail.com',
+            'nama_user' => 'Administrator',
+            'username' => 'administrator',
             'password' => \Hash::make('12345678'),
-            'role' => 'Administrator',
+            'hak_akses' => 'Administrator',
         ]);
         User::create([
-            'name' => 'Kepala Produksi',
-            'email' => 'kepalaproduksi@gmail.com',
+            'nama_user' => 'Kepala Produksi',
+            'username' => 'kepalaproduksi',
             'password' => \Hash::make('12345678'),
-            'role' => 'Kepala Produksi'
+            'hak_akses' => 'Kepala Produksi'
         ]);
     }
 }

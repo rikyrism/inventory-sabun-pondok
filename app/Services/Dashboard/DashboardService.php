@@ -27,7 +27,7 @@ class DashboardService
     public function getDataBarang()
     {
         $barangs = Barang::where('stok', '<=', 'stok_minimum')
-            ->orderBy('id', 'asc')
+            ->orderBy('id_barang', 'asc')
             ->get();
         return $barangs;
     }

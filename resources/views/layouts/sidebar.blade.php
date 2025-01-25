@@ -10,7 +10,7 @@
                 <div class="info">
                     <a>
                         <span>
-                            {{ auth()->user()->name }}
+                            {{ auth()->user()->nama_user }}
                             <span class="user-level">{{ auth()->user()->role }}</span>
                         </span>
                     </a>

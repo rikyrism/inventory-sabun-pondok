@@ -34,15 +34,15 @@
                             <div class="form-group">
                                 <label>ID Produksi <span class="text-danger">*</span></label>
                                 <!-- tampilkan "id_barang" -->
-                                <input type="text" name="unique_id" class="form-control" value="{{ $unique_id }}" readonly>
+                                <input type="text" name="id_produksi" class="form-control" value="{{ $unique_id }}" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label>Barang <span class="text-danger">*</span></label>
-                                <select id="barang_id" name="barang_id" class="form-control chosen-select" autocomplete="off" required>
+                                <select id="barang_id" name="id_barang" class="form-control chosen-select" autocomplete="off" required>
                                     <option selected disabled value="">-- Pilih --</option>
                                     @foreach ($barangs as $item)
-                                        <option value="{{ $item->id }}">{{ $item->unique_id }} - {{ $item->nama_barang }}</option>
+                                        <option value="{{ $item->id_barang }}">{{ $item->id_barang }} - {{ $item->nama_barang }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Barang tidak boleh kosong.</div>

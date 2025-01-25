@@ -11,14 +11,14 @@ class BarangKeluarService
 {
     public function index()
     {
-        $barangs = BarangKeluar::orderBy('id')->get();
+        $barangs = BarangKeluar::orderBy('id_keluar')->get();
         return $barangs;
     }
 
     public function getUniqueId()
     {
         $count = BarangKeluar::count();
-        $unique_id = "TK" . str_pad($count+1, 4, "0", STR_PAD_LEFT);
+        $unique_id = "TK" . str_pad($count+1, 3, "0", STR_PAD_LEFT);
         return $unique_id;
     }
 

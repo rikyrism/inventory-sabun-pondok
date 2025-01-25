@@ -13,13 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared('
-            CREATE TRIGGER `stok_masuk` AFTER INSERT ON `barang_masuks` FOR EACH ROW BEGIN
-                UPDATE barangs SET stok=stok+NEW.jumlah WHERE id=NEW.barang_id;
+            CREATE TRIGGER `stok_masuk` AFTER INSERT ON `tbl_barang_masuk` FOR EACH ROW BEGIN
+                UPDATE tbl_barang SET stok=stok+NEW.jumlah WHERE id_barang=NEW.barang;
             END;
         ');
         DB::unprepared('
-            CREATE TRIGGER `hapus_stok_masuk` BEFORE DELETE ON `barang_masuks` FOR EACH ROW BEGIN
-                UPDATE barangs SET stok=stok-OLD.jumlah WHERE id=OLD.barang_id;
+            CREATE TRIGGER `hapus_stok_masuk` BEFORE DELETE ON `tbl_barang_masuk` FOR EACH ROW BEGIN
+                UPDATE tbl_barang SET stok=stok-OLD.jumlah WHERE id_barang=OLD.barang;
             END;
         ');
     }

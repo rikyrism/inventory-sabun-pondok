@@ -43,7 +43,7 @@ class AuthController extends Controller
     {
         try {
             $input = $request->validate([
-                 'current_password' => ['required', 'current_password'],
+                'current_password' => ['required', 'current_password'],
                 'password' => ['required', 'confirmed'],
             ]);
 

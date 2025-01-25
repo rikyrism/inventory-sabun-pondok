@@ -13,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared('
-            CREATE TRIGGER `update_stok_after_insert` AFTER INSERT ON `produksis` FOR EACH ROW BEGIN
-                UPDATE barangs SET stok = stok + NEW.jumlah WHERE id=NEW.barang_id;
+            CREATE TRIGGER `update_stok_after_insert` AFTER INSERT ON `tbl_produksi` FOR EACH ROW BEGIN
+                UPDATE tbl_barang SET stok = stok + NEW.jumlah WHERE id_barang=NEW.id_barang;
             END;
         ');
     }

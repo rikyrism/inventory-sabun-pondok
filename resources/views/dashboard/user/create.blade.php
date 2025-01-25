@@ -32,9 +32,9 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label>Nama User <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" autocomplete="off" required>
+                                <input type="text" name="nama_user" class="form-control" autocomplete="off" required>
                                 <div class="invalid-feedback">Nama user tidak boleh kosong.</div>
-                                @error('name')
+                                @error('nama_user')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,10 +43,10 @@
 
 
                             <div class="form-group">
-                                <label>Email <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" autocomplete="off" required>
-                                <div class="invalid-feedback">Email tidak boleh kosong.</div>
-                                @error('email')
+                                <label>Username <span class="text-danger">*</span></label>
+                                <input type="text" name="username" class="form-control" autocomplete="off" required>
+                                <div class="invalid-feedback">Username tidak boleh kosong.</div>
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -66,7 +66,7 @@
 
                             <div class="form-group">
                                 <label>Hak Akses <span class="text-danger">*</span></label>
-                                <select name="role" class="form-control chosen-select" autocomplete="off" required>
+                                <select name="hak_akses" class="form-control chosen-select" autocomplete="off" required>
                                     <option selected disabled value="">-- Pilih --</option>
                                     <option value="Administrator">Administrator</option>
                                     <option value="Kepala Produksi">Kepala Produksi</option>

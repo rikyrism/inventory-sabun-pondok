@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Barang extends Model
 {
+    protected $table = 'tbl_barang';
+    protected $primaryKey = 'id_barang';
+    public $incrementing = false;
+    public $timestamps = false;
+
     protected $fillable = [
-        'unique_id',
+        'id_barang',
         'nama_barang',
         'stok_minimum',
         'stok',
@@ -17,12 +22,12 @@ class Barang extends Model
 
     public function barang_masuks(): HasMany
     {
-        return $this->hasMany(BarangMasuk::class);
+        return $this->hasMany(BarangMasuk::class, 'barang', 'id_barang');
     }
 
     public function barang_keluars(): HasMany
     {
-        return $this->hasMany(BarangKeluar::class);
+        return $this->hasMany(BarangKeluar::class, 'barang', 'id_barang');
     }
 
 }

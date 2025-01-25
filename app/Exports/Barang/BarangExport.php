@@ -16,7 +16,7 @@ class BarangExport implements FromView, WithStyles, ShouldAutoSize
     */
     public function view(): View
     {
-        $barangs = Barang::orderBy('id')->get();
+        $barangs = Barang::orderBy('id_barang')->get();
         return view('dashboard.laporan.stok.exports.export-excel', [
             'barangs' => $barangs
         ]);

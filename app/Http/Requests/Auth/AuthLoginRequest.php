@@ -22,7 +22,7 @@ class AuthLoginRequest extends FormRequest
     public function rules(): array
     {
         $validated = [
-            'email' => ['required', 'email:rfc,dns'],
+            'username' => ['required'],
             'password' => ['required'],
         ];
 

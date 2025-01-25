@@ -26,7 +26,7 @@
                 <div class="card-title">Ubah Data Jadwal Produksi</div>
             </div>
             <!-- form entri data -->
-            <form action="{{ route('produksi.update', $produksi->id) }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('produksi.update', $produksi->id_produksi) }}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
                 <div class="card-body">
@@ -35,12 +35,12 @@
                             <div class="form-group">
                                 <label>ID Produksi <span class="text-danger">*</span></label>
                                 <!-- tampilkan "id_barang" -->
-                                <input type="text" class="form-control" value="{{ $produksi->unique_id }}" readonly>
+                                <input type="text" class="form-control" value="{{ $produksi->id_produksi }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label>ID Barang <span class="text-danger">*</span></label>
                                 <!-- tampilkan "id_barang" -->
-                                <input type="text" class="form-control" value="{{ $produksi->barang->unique_id }}" readonly>
+                                <input type="text" class="form-control" value="{{ $produksi->barangTable->id_barang }}" readonly>
                             </div>
 
 

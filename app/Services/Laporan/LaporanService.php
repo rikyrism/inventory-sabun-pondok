@@ -13,7 +13,7 @@ class LaporanService
 {
     public function getDataBarang()
     {
-        $barangs = Barang::orderBy('id')->get();
+        $barangs = Barang::orderBy('id_barang')->get();
         return $barangs;
     }
 
@@ -39,7 +39,7 @@ class LaporanService
         $data = new BarangMasuk;
 
         if (isset($start_date) and isset($end_date)) {
-            $barang_masuks = $data->whereDate('tanggal', '>=', $start_date)->whereDate('tanggal', '<=', $end_date)->orderBy('id')->get();
+            $barang_masuks = $data->whereDate('tanggal', '>=', $start_date)->whereDate('tanggal', '<=', $end_date)->orderBy('id_masuk')->get();
             return $barang_masuks;
         } else {
             return collect([]);
@@ -69,7 +69,7 @@ class LaporanService
         $data = new BarangKeluar;
 
         if (isset($start_date) and isset($end_date)) {
-            $barang_keluars = $data->whereDate('tanggal', '>=', $start_date)->whereDate('tanggal', '<=', $end_date)->orderBy('id')->get();
+            $barang_keluars = $data->whereDate('tanggal', '>=', $start_date)->whereDate('tanggal', '<=', $end_date)->orderBy('id_keluar')->get();
             return $barang_keluars;
         } else {
             return collect([]);

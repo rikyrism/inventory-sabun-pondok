@@ -84,11 +84,11 @@
 
                 <div class="form-group form-floating-label">
                     <i class="fas fa-user user-icon"></i>
-                    <input type="email" id="email" name="email" class="form-control input-border-bottom"
-                        autocomplete="off" required placeholder="Email">
+                    <input type="text" id="username" name="username" class="form-control input-border-bottom"
+                        autocomplete="off" required placeholder="Username">
 
-                    <div class="invalid-feedback">Email tidak boleh kosong.</div>
-                    @error('email')
+                    <div class="invalid-feedback">Username tidak boleh kosong.</div>
+                    @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

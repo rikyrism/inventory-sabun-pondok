@@ -59,7 +59,7 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Nama User</th>
-                                <th class="text-center">Email</th>
+                                <th class="text-center">Username</th>
                                 <th class="text-center">Hak Akses</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -69,24 +69,24 @@
                             @foreach ($users as $index => $item)
                                 <tr>
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->nama_user }}</td>
+                                    <td>{{ $item->username }}</td>
                                     <td>{{ $item->role }}</td>
                                     <td width="100" class="text-center">
                                         <div>
                                             <!-- tombol ubah data -->
-                                            <a href="{{ route('user.edit', $item->id) }}" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
+                                            <a href="{{ route('user.edit', $item->id_user) }}" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
                                                 <i class="fas fa-pencil-alt fa-sm"></i>
                                             </a>
                                             <!-- tombol hapus data -->
-                                            <form action="{{ route('user.destroy', $item->id) }}" method="POST" style="display:none;">
+                                            <form action="{{ route('user.destroy', $item->id_user) }}" method="POST" style="display:none;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id}}">Delete</button>
+                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id_user}}">Delete</button>
                                             </form>
 
                                             <a href="#"
-                                                onclick="if (confirm('Anda yakin ingin menghapus data user dengan email {{ $item->email }}?')) { document.getElementById('delete-data-{{$item->id}}').click(); }"
+                                                onclick="if (confirm('Anda yakin ingin menghapus data user dengan username {{ $item->username }}?')) { document.getElementById('delete-data-{{$item->id_user}}').click(); }"
                                                 class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Hapus"
                                             >

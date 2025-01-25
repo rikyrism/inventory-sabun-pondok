@@ -14,7 +14,7 @@
         @foreach ($barangs as $index => $item)
             <tr>
                 <td align="center">{{ $index + 1 }}</td>
-                <td align="center">{{ $item->unique_id }}</td>
+                <td align="center">{{ $item->id_barang }}</td>
                 <td align="center">{{ $item->nama_barang }}</td>
                 @if ($item->stok <= $item->stok_minimum)
                     <td style="background-color:#ffad46;color:#fff">{{ $item->stok }}</td>

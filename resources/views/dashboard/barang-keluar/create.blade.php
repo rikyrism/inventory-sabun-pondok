@@ -33,9 +33,9 @@
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group">
-                                <label>ID Masuk <span class="text-danger">*</span></label>
+                                <label>ID Keluar <span class="text-danger">*</span></label>
                                 <!-- tampilkan "id_barang" -->
-                                <input type="text" name="unique_id" class="form-control" value="{{ $unique_id }}" readonly>
+                                <input type="text" name="id_keluar" class="form-control" value="{{ $unique_id }}" readonly>
                             </div>
                         </div>
                         <div class="col-md-5 ml-auto">
@@ -58,10 +58,10 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label>Barang <span class="text-danger">*</span></label>
-                                <select id="barang_id" name="barang_id" class="form-control chosen-select" autocomplete="off" required>
+                                <select id="barang_id" name="barang" class="form-control chosen-select" autocomplete="off" required>
                                     <option selected disabled value="">-- Pilih --</option>
                                     @foreach ($barangs as $item)
-                                        <option value="{{ $item->id }}">{{ $item->unique_id }} - {{ $item->nama_barang }}</option>
+                                        <option value="{{ $item->id_barang }}">{{ $item->id_barang }} - {{ $item->nama_barang }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Barang tidak boleh kosong.</div>
@@ -115,8 +115,8 @@
             const barangs = @json($barangs)
 
             $('#barang_id').change(function() {
-                let barang_id = +$('#barang_id').val();
-                let barang = barangs.filter((item) => item.id === barang_id)
+                let barang_id = $('#barang_id').val();
+                let barang = barangs.filter((item) => item.id_barang === barang_id)
 
                 if (barang.length > 0) {
                     barang = barang[0]

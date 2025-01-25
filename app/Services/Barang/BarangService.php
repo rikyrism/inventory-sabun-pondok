@@ -11,7 +11,7 @@ class BarangService
 {
     public function index()
     {
-        $barangs = Barang::orderBy('id')->get();
+        $barangs = Barang::orderBy('id_barang')->get();
         return $barangs;
     }
 

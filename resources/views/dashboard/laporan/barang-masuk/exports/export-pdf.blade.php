@@ -28,11 +28,11 @@
                 @foreach ($barang_masuks as $index => $item)
                     <tr>
                         <td width="50" class="text-center"> {{ $index + 1 }} </td>
-                        <td class="text-center">{{ $item->unique_id }}</td>
+                        <td class="text-center">{{ $item->id_masuk }}</td>
                         <td class="text-center">{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
-                        <td>{{ $item->barang->unique_id }} - {{ $item->barang->nama_barang }}</td>
+                        <td>{{ $item->barangTable->unique_id }} - {{ $item->barangTable->nama_barang }}</td>
                         <td class="text-center">{{ $item->jumlah }}</td>
-                        <td class="text-center">{{ $item->barang->satuan }}</td>
+                        <td class="text-center">{{ $item->barangTable->satuan }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -11,7 +11,7 @@ class ProduksiService
 {
     public function index()
     {
-        $barangs = Produksi::orderBy('id')->get();
+        $barangs = Produksi::orderBy('id_produksi')->get();
         return $barangs;
     }
 

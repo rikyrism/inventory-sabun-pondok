@@ -71,29 +71,29 @@
                             @foreach ($barangs as $index => $item)
                                 <tr>
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
-                                    <td width="100" class="text-center">{{ $item->unique_id }}</td>
+                                    <td width="100" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200">{{ $item->nama_barang }}</td>
                                     <td width="80" class="text-right">{{ $item->stok }}</td>
                                     <td width="100">{{ $item->satuan }}</td>
                                     <td width="100" class="text-center">
                                         <div>
                                             <!-- tombol detail data -->
-                                            <a href="{{ route('barang.show', $item->id) }}" class="btn btn-icon btn-round btn-primary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Detail">
+                                            <a href="{{ route('barang.show', $item->id_barang) }}" class="btn btn-icon btn-round btn-primary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Detail">
                                                 <i class="fas fa-clone fa-sm"></i>
                                             </a>
                                             <!-- tombol ubah data -->
-                                            <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
+                                            <a href="{{ route('barang.edit', $item->id_barang) }}" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
                                                 <i class="fas fa-pencil-alt fa-sm"></i>
                                             </a>
                                             <!-- tombol hapus data -->
-                                            <form action="{{ route('barang.destroy', $item->id) }}" method="POST" style="display:none;">
+                                            <form action="{{ route('barang.destroy', $item->id_barang) }}" method="POST" style="display:none;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id}}">Delete</button>
+                                                <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id_barang}}">Delete</button>
                                             </form>
 
                                             <a href="#"
-                                                onclick="if (confirm('Anda yakin ingin menghapus data barang {{ $item->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id}}').click(); }"
+                                                onclick="if (confirm('Anda yakin ingin menghapus data barang {{ $item->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id_barang}}').click(); }"
                                                 class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Hapus"
                                             >

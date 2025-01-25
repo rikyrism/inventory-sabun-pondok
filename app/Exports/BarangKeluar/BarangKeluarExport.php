@@ -25,7 +25,7 @@ class BarangKeluarExport implements FromView, WithStyles, ShouldAutoSize
     public function view(): View
     {
         $data = new BarangKeluar;
-        $barang_keluars = $data->whereDate('tanggal', '>=', $this->tanggal_awal)->whereDate('tanggal', '<=', $this->tanggal_akhir)->orderBy('id')->get();
+        $barang_keluars = $data->whereDate('tanggal', '>=', $this->tanggal_awal)->whereDate('tanggal', '<=', $this->tanggal_akhir)->orderBy('id_keluar')->get();
         return view('dashboard.laporan.barang-keluar.exports.export-excel', [
             'barang_keluars' => $barang_keluars,
             'tanggal_awal' => $this->start_date,

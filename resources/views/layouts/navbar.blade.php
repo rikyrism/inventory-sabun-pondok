@@ -17,7 +17,7 @@
                             <div class="avatar-lg"><img src="/assets/img/avatar-2.png" alt="image profile"
                                     class="avatar-img rounded"></div>
                             <div class="u-text pt-1">
-                                <h4>{{ auth()->user()->name }}</h4>
+                                <h4>{{ auth()->user()->nama_user }}</h4>
                                 <p class="text-muted">{{ auth()->user()->role }}</p>
                             </div>
                         </div>

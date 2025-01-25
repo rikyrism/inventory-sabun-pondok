@@ -11,7 +11,7 @@ class UserService
 {
     public function index()
     {
-        $barangs = User::orderBy('id')->get();
+        $barangs = User::orderBy('id_user')->get();
         return $barangs;
     }
 
@@ -26,10 +26,10 @@ class UserService
     {
         \Log::info('update user service: '. json_encode($input));
         $password = isset($input['password']) ? \Hash::make($input['password']) : $data->password;
-        $data->name = $input['name'] ?? $data->name;
-        $data->email = $input['email'] ?? $data->email;
+        $data->nama_user = $input['nama_user'] ?? $data->nama_user;
+        $data->username = $input['username'] ?? $data->username;
         $data->password = $password;
-        $data->role = $input['role'] ?? $data->role;
+        $data->hak_akses = $input['hak_akses'] ?? $data->hak_akses;
         $data->save();
         return true;
     }

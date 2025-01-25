@@ -22,8 +22,8 @@ class ProduksiStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unique_id' => ['required'],
-            'barang_id' => ['required', 'exists:barangs,id'],
+            'id_produksi' => ['required'],
+            'id_barang' => ['required', 'exists:tbl_barang,id_barang'],
             'nama_barang' => ['required', 'string', 'min:1', 'max:50'],
             'satuan' => ['required', 'string', 'min:1', 'max:10'],
             'tanggal' => ['required', 'date'],
