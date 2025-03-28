@@ -6,7 +6,7 @@ use App\Http\Controllers;
 // guest routes
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
-        return view('welcome');
+        return redirect()->route('auth.index');
     });
 
     Route::prefix('auth')->name('auth.')->group(function () {
@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('barang', Controllers\Barang\BarangController::class);
+    Route::resource('kategori', Controllers\Kategori\KategoriController::class);
     Route::resource('produksi', Controllers\Produksi\ProduksiController::class);
     Route::resource('barang-masuk', Controllers\BarangMasuk\BarangMasukController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::resource('barang-keluar', Controllers\BarangKeluar\BarangKeluarController::class)->only(['index', 'create', 'store', 'destroy']);

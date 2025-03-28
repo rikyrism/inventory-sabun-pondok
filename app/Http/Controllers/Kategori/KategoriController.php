@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Http\Controllers\Kategori;
+
+use App\Http\Controllers\Controller;
+use App\Models\Kategori;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
+use App\Http\Requests\Kategori\KategoriStoreRequest;
+use App\Http\Requests\Kategori\KategoriUpdateRequest;
+use App\Services\Kategori\KategoriService;
+
+class KategoriController extends Controller
+{
+    private $name = 'kategori';
+    public function __construct(
+        protected KategoriService $service
+    ) {}
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): View
+    {
+        $kategoris = $this->service->index();
+        return view('dashboard.kategori.index', [
+            'kategoris' => $kategoris,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(): View
+    {
+        return view('dashboard.kategori.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(KategoriStoreRequest $request): RedirectResponse
+    {
+        $input = $request->validated();
+        $this->service->store($input);
+        return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil disimpan.");
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Kategori $kategori): View
+    {
+        return view('dashboard.kategori.show', [
+            'kategori' => $kategori,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Kategori $kategori): View
+    {
+        return view('dashboard.kategori.edit', [
+            'kategori' => $kategori,
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(KategoriUpdateRequest $request, Kategori $kategori): RedirectResponse
+    {
+        $input = $request->validated();
+        $this->service->update($input, $kategori);
+        return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil diubah.");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Kategori $kategori)
+    {
+        $data = $this->service->destroy($kategori);
+        if ($data) {
+            return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil dihapus.");
+        } else {
+            return redirect()->route('kategori.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+        }
+    }
+}

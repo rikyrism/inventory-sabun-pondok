@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Kategori;
 
 class Barang extends Model
 {
@@ -14,6 +16,7 @@ class Barang extends Model
 
     protected $fillable = [
         'id_barang',
+        'id_kategori',
         'nama_barang',
         'stok_minimum',
         'stok',
@@ -28,6 +31,11 @@ class Barang extends Model
     public function barang_keluars(): HasMany
     {
         return $this->hasMany(BarangKeluar::class, 'barang', 'id_barang');
+    }
+
+    public function kategori(): HasOne
+    {
+        return $this->hasOne(Kategori::class, 'id', 'id_kategori');
     }
 
 }

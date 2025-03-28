@@ -36,8 +36,10 @@ class BarangController extends Controller
     public function create(): View
     {
         $unique_id = $this->service->getUniqueId();
+        $kategoris = $this->service->kategoris();
         return view('dashboard.barang.create', [
             'unique_id' => $unique_id,
+            'kategoris' => $kategoris,
         ]);
     }
 
@@ -66,8 +68,11 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang): View
     {
+        $kategoris = $this->service->kategoris();
+
         return view('dashboard.barang.edit', [
             'barang' => $barang,
+            'kategoris' => $kategoris,
         ]);
     }
 

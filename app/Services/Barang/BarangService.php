@@ -3,6 +3,7 @@
 namespace App\Services\Barang;
 
 use App\Models\Barang;
+use App\Models\Kategori;
 
 /**
  * Class BarangService.
@@ -11,8 +12,14 @@ class BarangService
 {
     public function index()
     {
-        $barangs = Barang::orderBy('id_barang')->get();
+        $barangs = Barang::orderBy('id_barang')->with('kategori')->get();
         return $barangs;
+    }
+
+    public function kategoris()
+    {
+        $data = Kategori::all();
+        return $data;
     }
 
     public function getUniqueId()
@@ -30,6 +37,7 @@ class BarangService
 
     public function update($input, $data)
     {
+        $data->id_kategori = $input['id_kategori'] ?? $data->id_kategori;
         $data->nama_barang = $input['nama_barang'] ?? $data->nama_barang;
         $data->stok_minimum = $input['stok_minimum'] ?? $data->stok_minimum;
         $data->satuan = $input['satuan'] ?? $data->satuan;

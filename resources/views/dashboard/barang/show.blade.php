@@ -50,6 +50,11 @@
                                     <td>{{ $barang->nama_barang }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Kategori</td>
+                                    <td>:</td>
+                                    <td>{{ $barang->kategori->name }}</td>
+                                </tr>
+                                <tr>
                                     <td>Stok Minimum</td>
                                     <td>:</td>
                                     <td>{{ $barang->stok_minimum }}</td>

@@ -13,6 +13,23 @@
         <h4 class="text-section">Master</h4>
     </li>
 
+    <li class="nav-item {{ preg_match('/^kategori\.(index|create|show|edit)$/', Route::currentRouteName()) ? 'submenu active' : ''}}">
+        <a data-toggle="collapse" href="#kategori">
+            <i class="fas fa-clone"></i>
+            <p>Kategori</p>
+            <span class="caret"></span>
+        </a>
+
+        <div class="collapse {{ preg_match('/^kategori\.(index|create|show|edit)$/', Route::currentRouteName()) ? 'show' : ''}}" id="kategori">
+            <ul class="nav nav-collapse">
+                <li class="active">
+                    <a href="{{ route('kategori.index') }}">
+                        <span class="sub-item">Data Kategori</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </li>
     <li class="nav-item {{ preg_match('/^barang\.(index|create|show|edit)$/', Route::currentRouteName()) ? 'submenu active' : ''}}">
         <a data-toggle="collapse" href="#barang">
             <i class="fas fa-clone"></i>
