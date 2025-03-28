@@ -68,8 +68,10 @@
                                 <th class="text-center">No.</th>
                                 <th class="text-center">ID Barang</th>
                                 <th class="text-center">Nama Barang</th>
+                                <th class="text-center">Kategori</th>
                                 <th class="text-center">Stok</th>
                                 <th class="text-center">Satuan</th>
+                                <th class="text-center">Ukuran</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,6 +81,7 @@
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
                                     <td width="100" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200" class="text-center">{{ $item->nama_barang }}</td>
+                                    <td width="200" class="text-center">{{ $item->kategori->name }}</td>
                                     <td width="100" class="text-center">
                                         @if ($item->stok <= $item->stok_minimum)
                                             <span class="badge badge-warning">{{ $item->stok }}</span>
@@ -87,6 +90,7 @@
                                         @endif
                                     </td>
                                     <td width="100" class="text-center">{{ $item->satuan }}</td>
+                                    <td width="100" class="text-center">{{ $item->ukuran }} ml</td>
                                 </tr>
                             @endforeach
                         </tbody>

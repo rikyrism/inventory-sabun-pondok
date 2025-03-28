@@ -69,6 +69,11 @@
                                     <td>:</td>
                                     <td>{{ $barang->satuan }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Ukuran</td>
+                                    <td>:</td>
+                                    <td>{{ $barang->ukuran }} ml</td>
+                                </tr>
                             </table>
                         </div>
                     </div>

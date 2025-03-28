@@ -20,6 +20,7 @@
                     <th>Nama Barang</th>
                     <th>Stok</th>
                     <th>Satuan</th>
+                    <th>Ukuran</th>
                 </tr>
             </thead>
             <tbody class="text-dark">
@@ -36,6 +37,7 @@
                             @endif
                         </td>
                         <td class="text-center">{{ $item->satuan }}</td>
+                        <td class="text-center">{{ $item->ukuran }} ml</td>
                     </tr>
                 @endforeach
             </tbody>

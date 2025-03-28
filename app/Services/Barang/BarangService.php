@@ -41,6 +41,7 @@ class BarangService
         $data->nama_barang = $input['nama_barang'] ?? $data->nama_barang;
         $data->stok_minimum = $input['stok_minimum'] ?? $data->stok_minimum;
         $data->satuan = $input['satuan'] ?? $data->satuan;
+        $data->ukuran = $input['ukuran'] ?? $data->ukuran;
         $data->save();
         return true;
     }

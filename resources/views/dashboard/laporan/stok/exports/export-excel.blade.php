@@ -8,6 +8,7 @@
             <th align="center">Nama Barang</th>
             <th align="center">Stok</th>
             <th align="center">Satuan</th>
+            <th align="center">Ukuran</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
                     <td align="center">{{ $item->stok }}</td>
                 @endif
                 <td align="center">{{ $item->satuan }}</td>
+                <td align="center">{{ $item->ukuran }} ml</td>
             </tr>
         @endforeach
 

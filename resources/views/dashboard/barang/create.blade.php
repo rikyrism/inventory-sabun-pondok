@@ -85,6 +85,17 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label>Ukuran <span class="text-danger">*</span></label>
+                                <input type="number" name="ukuran" class="form-control" autocomplete="off" required>
+                                <div class="invalid-feedback">Ukuran tidak boleh kosong.</div>
+                                @error('ukuran')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="card-action">
