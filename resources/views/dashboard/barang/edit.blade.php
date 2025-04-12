@@ -78,17 +78,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Satuan <span class="text-danger">*</span></label>
-                                <input type="text" name="satuan" class="form-control" autocomplete="off" value="{{ $barang->satuan }}" required>
-                                <div class="invalid-feedback">Satuan tidak boleh kosong.</div>
-                                @error('satuan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
                                 <label>Ukuran <span class="text-danger">*</span></label>
                                 <input type="number" name="ukuran" class="form-control" autocomplete="off" value="{{ $barang->ukuran }}" required>
                                 <div class="invalid-feedback">Ukuran tidak boleh kosong.</div>

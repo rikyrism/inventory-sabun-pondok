@@ -63,7 +63,7 @@
                                 <th class="text-center">ID Produksi</th>
                                 <th class="text-center">Nama Barang</th>
                                 <th class="text-center">Jumlah</th>
-                                <th class="text-center">Satuan</th>
+                                <th class="text-center">Ukuran</th>
                                 <th class="text-center">Tanggal</th>
                                 <th class="text-center">Status</th>
                                 @if (auth()->user()->role === 'Administrator')
@@ -80,7 +80,7 @@
                                     <td width="100" class="text-center">{{ $item->id_produksi }}</td>
                                     <td width="200">{{ $item->nama_barang }}</td>
                                     <td width="80" class="text-right">{{ $item->jumlah }}</td>
-                                    <td width="100">{{ $item->satuan }}</td>
+                                    <td width="100">{{ $item->satuan }} ml</td>
                                     <td width="100" class="text-center">{{ $item->tanggal }}</td>
                                     <td width="100" class="text-center">{{ $item->status }}</td>
 

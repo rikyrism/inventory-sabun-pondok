@@ -70,7 +70,6 @@
                                 <th class="text-center">Nama Barang</th>
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Stok</th>
-                                <th class="text-center">Satuan</th>
                                 <th class="text-center">Ukuran</th>
                             </tr>
                         </thead>
@@ -89,7 +88,6 @@
                                             {{ $item->stok }}
                                         @endif
                                     </td>
-                                    <td width="100" class="text-center">{{ $item->satuan }}</td>
                                     <td width="100" class="text-center">{{ $item->ukuran }} ml</td>
                                 </tr>
                             @endforeach

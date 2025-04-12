@@ -63,7 +63,6 @@
                                 <th class="text-center">Nama Barang</th>
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Stok</th>
-                                <th class="text-center">Satuan</th>
                                 <th class="text-center">Ukuran</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -77,7 +76,6 @@
                                     <td width="200">{{ $item->nama_barang }}</td>
                                     <td width="200">{{ $item->kategori->name }}</td>
                                     <td width="80" class="text-right">{{ $item->stok }}</td>
-                                    <td width="100">{{ $item->satuan }}</td>
                                     <td width="100">{{ $item->ukuran }} ml</td>
                                     <td width="100" class="text-center">
                                         <div>

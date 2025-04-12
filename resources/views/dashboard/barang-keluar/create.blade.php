@@ -96,6 +96,12 @@
                                 <input type="text" id="total" name="total" class="form-control" readonly>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Penerima Keluar <span class="text-danger">*</span></label>
+                                <input type="text" name="penerima_keluar" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     <div class="card-action">
                         <!-- tombol simpan data -->

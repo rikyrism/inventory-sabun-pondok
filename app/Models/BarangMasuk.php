@@ -22,6 +22,7 @@ class BarangMasuk extends Model
         'barang',
         'tanggal',
         'jumlah',
+        'penerima_masuk',
     ];
 
     public function barangTable(): BelongsTo

@@ -60,9 +60,9 @@
                                 <td>{{ $produksi->jumlah }}</td>
                             </tr>
                             <tr>
-                                <td>Satuan</td>
+                                <td>Ukuran</td>
                                 <td>:</td>
-                                <td>{{ $produksi->satuan }}</td>
+                                <td>{{ $produksi->satuan }} ml</td>
                             </tr>
                             <tr>
                                 <td>Tanggal</td>

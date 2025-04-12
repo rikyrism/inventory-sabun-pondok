@@ -19,7 +19,6 @@
                     <th>ID Barang</th>
                     <th>Nama Barang</th>
                     <th>Stok</th>
-                    <th>Satuan</th>
                     <th>Ukuran</th>
                 </tr>
             </thead>
@@ -36,7 +35,6 @@
                                 {{ $item->stok }}
                             @endif
                         </td>
-                        <td class="text-center">{{ $item->satuan }}</td>
                         <td class="text-center">{{ $item->ukuran }} ml</td>
                     </tr>
                 @endforeach

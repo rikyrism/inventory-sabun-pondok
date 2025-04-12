@@ -108,7 +108,7 @@
                                 <th class="text-center">ID Barang</th>
                                 <th class="text-center">Nama Barang</th>
                                 <th class="text-center">Stok</th>
-                                <th class="text-center">Satuan</th>
+                                <th class="text-center">Ukuran</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -120,7 +120,7 @@
                                     <td width="70" class="text-right">
                                         <span class="badge badge-warning">{{ $item->stok }}</span>
                                     </td>
-                                    <td width="70">{{ $item->satuan }}</td>
+                                    <td width="70">{{ $item->ukuran }} ml</td>
                                 </tr>
                             @endforeach
                         </tbody>

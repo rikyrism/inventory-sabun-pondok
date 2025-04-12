@@ -21,7 +21,8 @@
                     <th>Tanggal</th>
                     <th>Barang</th>
                     <th>Jumlah Masuk</th>
-                    <th>Satuan</th>
+                    <th>Ukuran</th>
+                    <th>Penerima Masuk</th>
                 </tr>
             </thead>
             <tbody class="text-dark">
@@ -32,7 +33,8 @@
                         <td class="text-center">{{ date('d-m-Y', strtotime($item->tanggal)) }}</td>
                         <td>{{ $item->barangTable->unique_id }} - {{ $item->barangTable->nama_barang }}</td>
                         <td class="text-center">{{ $item->jumlah }}</td>
-                        <td class="text-center">{{ $item->barangTable->satuan }}</td>
+                        <td class="text-center">{{ $item->barangTable->ukuran }} ml</td>
+                        <td class="text-center">{{ $item->penerima_masuk }}</td>
                     </tr>
                 @endforeach
             </tbody>

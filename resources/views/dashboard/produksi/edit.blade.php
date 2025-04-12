@@ -68,9 +68,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Satuan <span class="text-danger">*</span></label>
+                                <label>Ukuran <span class="text-danger">*</span></label>
                                 <input type="text" name="satuan" class="form-control" autocomplete="off" value="{{ $produksi->satuan }}" required>
-                                <div class="invalid-feedback">Satuan tidak boleh kosong.</div>
+                                <div class="invalid-feedback">Ukuran tidak boleh kosong.</div>
                                 @error('satuan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

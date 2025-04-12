@@ -25,7 +25,8 @@ class BarangKeluarStoreRequest extends FormRequest
             'id_keluar' => ['nullable', 'string', 'min:1', 'max:255'],
             'barang' => ['required', 'exists:tbl_barang,id_barang'],
             'tanggal' => ['required', 'date'],
-            'jumlah' => ['required', 'integer', 'min:-2147483648', 'max:2147483647']
+            'jumlah' => ['required', 'integer', 'min:-2147483648', 'max:2147483647'],
+            'penerima_keluar' => ['required']
         ];
     }
 }

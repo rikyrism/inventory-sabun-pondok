@@ -124,7 +124,8 @@
                                     <th class="text-center">Tanggal</th>
                                     <th class="text-center">Barang</th>
                                     <th class="text-center">Jumlah Masuk</th>
-                                    <th class="text-center">Satuan</th>
+                                    <th class="text-center">Ukuran</th>
+                                    <th class="text-center">Penerima Masuk</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -136,7 +137,8 @@
                                         <td width="200" class="text-center">{{ date('d-m-Y', strtotime($item->nama_barang)) }}</td>
                                         <td width="200" class="text-center">{{ $item->barangTable->unique_id }} - {{ $item->barangTable->nama_barang }}</td>
                                         <td width="100" class="text-center">{{ $item->jumlah }}</td>
-                                        <td width="100" class="text-center">{{ $item->barangTable->satuan }}</td>
+                                        <td width="100" class="text-center">{{ $item->barangTable->ukuran }} ml</td>
+                                        <td width="100" class="text-center">{{ $item->penerima_masuk }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
