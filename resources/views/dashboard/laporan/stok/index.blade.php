@@ -68,6 +68,8 @@
                                 <th class="text-center">No.</th>
                                 <th class="text-center">ID Barang</th>
                                 <th class="text-center">Nama Barang</th>
+                                <th class="text-center">Harga Barang</th>
+                                <th class="text-center">Varian</th>
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Stok</th>
                                 <th class="text-center">Ukuran</th>
@@ -80,7 +82,9 @@
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
                                     <td width="100" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200" class="text-center">{{ $item->nama_barang }}</td>
-                                    <td width="200" class="text-center">{{ $item->kategoriTable->name }}</td>
+                                    <td width="200" class="text-center">{{ $item->harga_barang }}</td>
+                                    <td width="200" class="text-center">{{ $item->nama_varian }}</td>
+                                    <td width="200" class="text-center">{{ $item->kategoriTable->nama_kategori }}</td>
                                     <td width="100" class="text-center">
                                         @if ($item->stok <= $item->stok_minimum)
                                             <span class="badge badge-warning">{{ $item->stok }}</span>

@@ -18,6 +18,8 @@
                     <th>No.</th>
                     <th>ID Barang</th>
                     <th>Nama Barang</th>
+                    <th>Harga Barang</th>
+                    <th>Varian</th>
                     <th>Stok</th>
                     <th>Ukuran</th>
                 </tr>
@@ -28,6 +30,8 @@
                         <td width="50" class="text-center"> {{ $index + 1 }} </td>
                         <td class="text-center">{{ $item->id_barang }}</td>
                         <td>{{ $item->nama_barang }}</td>
+                        <td>{{ $item->harga_barang }}</td>
+                        <td>{{ $item->nama_varian }}</td>
                         <td class="text-right">
                             @if ($item->stok <= $item->stok_minimum)
                                 <span class="badge badge-warning">{{ $item->stok }}</span>
