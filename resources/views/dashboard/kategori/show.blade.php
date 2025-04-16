@@ -40,9 +40,15 @@
                         <div class="card-body">
                             <table class="table table-striped">
                                 <tr>
+                                    <td>ID Kategori</td>
+                                    <td>:</td>
+                                    <td>{{ $kategori->id_kategori }}</td>
+                                </tr>
+
+                                <tr>
                                     <td>Nama Kategori</td>
                                     <td>:</td>
-                                    <td>{{ $kategori->name }}</td>
+                                    <td>{{ $kategori->nama_kategori }}</td>
                                 </tr>
                             </table>
                         </div>

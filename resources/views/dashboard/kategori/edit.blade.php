@@ -26,17 +26,21 @@
                 <div class="card-title">Ubah Data Kategori</div>
             </div>
             <!-- form entri data -->
-            <form action="{{ route('kategori.update', $kategori->id) }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('kategori.update', $kategori->id_kategori) }}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
                             <div class="form-group">
+                                <label>ID Kategori <span class="text-danger">*</span></label>
+                                <input type="text" name="id_kategori" class="form-control" autocomplete="off" value="{{ $kategori->id_kategori}}" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label>Nama Kategori <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" autocomplete="off" value="{{ $kategori->name}}" required>
+                                <input type="text" name="nama_kategori" class="form-control" autocomplete="off" value="{{ $kategori->nama_kategori}}" required>
                                 <div class="invalid-feedback">Nama kategori tidak boleh kosong.</div>
-                                @error('name')
+                                @error('nama_kategori')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

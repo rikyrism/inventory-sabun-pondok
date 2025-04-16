@@ -22,7 +22,8 @@ class KategoriStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:1']
+            'id_kategori' => ['required'],
+            'nama_kategori' => ['required', 'string', 'min:1']
         ];
     }
 }

@@ -35,7 +35,11 @@ class KategoriController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.kategori.create');
+        $unique_id = $this->service->getUniqueId();
+
+        return view('dashboard.kategori.create', [
+            'unique_id' => $unique_id,
+        ]);
     }
 
     /**

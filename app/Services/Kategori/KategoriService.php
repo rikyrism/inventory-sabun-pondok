@@ -15,6 +15,13 @@ class KategoriService
         return $data;
     }
 
+    public function getUniqueId()
+    {
+        $count = Kategori::count();
+        $unique_id = "K" . str_pad($count+1, 4, "0", STR_PAD_LEFT);
+        return $unique_id;
+    }
+
     public function store($input)
     {
         Kategori::create($input);
@@ -23,7 +30,7 @@ class KategoriService
 
     public function update($input, $data)
     {
-        $data->name = $input['name'] ?? $data->name;
+        $data->nama_kategori = $input['nama_kategori'] ?? $data->nama_kategori;
         $data->save();
         return true;
     }

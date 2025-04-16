@@ -23,7 +23,7 @@ class BarangStoreRequest extends FormRequest
     {
         return [
             'id_barang' => ['required'],
-            'id_kategori' => ['required', 'exists:tbl_kategori,id'],
+            'kategori' => ['required', 'exists:tbl_kategori,id_kategori'],
             'nama_barang' => ['required', 'string', 'min:1', 'max:50'],
             'stok_minimum' => ['required', 'integer', 'min:-2147483648', 'max:2147483647'],
             'ukuran' => ['required'],

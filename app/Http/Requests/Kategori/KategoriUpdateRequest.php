@@ -22,7 +22,7 @@ class KategoriUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['sometimes', 'string', 'min:1']
+            'nama_kategori' => ['sometimes', 'string', 'min:1']
         ];
     }
 }

@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Kategori extends Model
 {
     protected $table = 'tbl_kategori';
-
+    protected $primaryKey = 'id_kategori';
+    public $incrementing = false;
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
+        'id_kategori',
+        'nama_kategori',
     ];
 
     public function barangs(): HasMany
     {
-        return $this->hasMany(Barang::class, 'id_kategori', 'id');
+        return $this->hasMany(Barang::class, 'kategori', 'id_kategori');
     }
 }

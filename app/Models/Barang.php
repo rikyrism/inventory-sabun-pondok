@@ -16,7 +16,7 @@ class Barang extends Model
 
     protected $fillable = [
         'id_barang',
-        'id_kategori',
+        'kategori',
         'nama_barang',
         'stok_minimum',
         'stok',
@@ -35,7 +35,7 @@ class Barang extends Model
 
     public function kategori(): HasOne
     {
-        return $this->hasOne(Kategori::class, 'id', 'id_kategori');
+        return $this->hasOne(Kategori::class, 'id_kategori', 'kategori');
     }
 
 }
