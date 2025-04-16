@@ -52,7 +52,7 @@
                                 <tr>
                                     <td>Kategori</td>
                                     <td>:</td>
-                                    <td>{{ $barang->kategori->name }}</td>
+                                    <td>{{ $barang->kategoriTable->nama_kategori }}</td>
                                 </tr>
                                 <tr>
                                     <td>Stok Minimum</td>

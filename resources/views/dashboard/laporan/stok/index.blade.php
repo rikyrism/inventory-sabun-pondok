@@ -80,7 +80,7 @@
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
                                     <td width="100" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200" class="text-center">{{ $item->nama_barang }}</td>
-                                    <td width="200" class="text-center">{{ $item->kategori->name }}</td>
+                                    <td width="200" class="text-center">{{ $item->kategoriTable->name }}</td>
                                     <td width="100" class="text-center">
                                         @if ($item->stok <= $item->stok_minimum)
                                             <span class="badge badge-warning">{{ $item->stok }}</span>

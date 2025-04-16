@@ -74,7 +74,7 @@
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
                                     <td width="100" class="text-center">{{ $item->id_barang }}</td>
                                     <td width="200">{{ $item->nama_barang }}</td>
-                                    <td width="200">{{ $item->kategori->name }}</td>
+                                    <td width="200">{{ $item->kategoriTable->nama_kategori }}</td>
                                     <td width="80" class="text-right">{{ $item->stok }}</td>
                                     <td width="100">{{ $item->ukuran }} ml</td>
                                     <td width="100" class="text-center">

@@ -33,7 +33,7 @@ class Barang extends Model
         return $this->hasMany(BarangKeluar::class, 'barang', 'id_barang');
     }
 
-    public function kategori(): HasOne
+    public function kategoriTable(): HasOne
     {
         return $this->hasOne(Kategori::class, 'id_kategori', 'kategori');
     }

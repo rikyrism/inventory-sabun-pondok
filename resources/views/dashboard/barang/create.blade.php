@@ -50,14 +50,14 @@
 
                             <div class="form-group">
                                 <label>Kategori <span class="text-danger">*</span></label>
-                                <select id="id-kategori" name="id_kategori" class="form-control chosen-select" autocomplete="off" required>
+                                <select id="id-kategori" name="kategori" class="form-control chosen-select" autocomplete="off" required>
                                     <option selected disabled value="">-- Pilih --</option>
                                     @foreach ($kategoris as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id_kategori }}">{{ $item->id_kategori }} - {{ $item->nama_kategori }}</option>
                                     @endforeach
                                 </select>
                                 <div class="invalid-feedback">Kategori tidak boleh kosong.</div>
-                                @error('id_kategori')
+                                @error('kategori')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
