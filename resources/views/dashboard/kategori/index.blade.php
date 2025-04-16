@@ -61,6 +61,7 @@
                                 <th class="text-center">No.</th>
                                 <th class="text-center">ID Kategori</th>
                                 <th class="text-center">Nama Kategori</th>
+                                <th class="text-center">Jumlah Barang</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -71,6 +72,7 @@
                                     <td width="50" class="text-center">{{ $index + 1 }}</td>
                                     <td width="100" class="text-center">{{ $item->id_kategori }}</td>
                                     <td width="100" class="text-center">{{ $item->nama_kategori }}</td>
+                                    <td width="100" class="text-center">{{ $item->barangs()->count() }}</td>
                                     <td width="100" class="text-center">
                                         <div>
                                             <!-- tombol detail data -->

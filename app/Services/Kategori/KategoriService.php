@@ -11,7 +11,7 @@ class KategoriService
 {
     public function index()
     {
-        $data = Kategori::get();
+        $data = Kategori::with('barangs')->get();
         return $data;
     }
 

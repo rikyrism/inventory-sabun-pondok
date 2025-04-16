@@ -50,6 +50,11 @@
                                     <td>:</td>
                                     <td>{{ $kategori->nama_kategori }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Jumlah Barang</td>
+                                    <td>:</td>
+                                    <td>{{ $kategori->barangs()->count() }}</td>
+                                </tr>
                             </table>
                         </div>
                     </div>
