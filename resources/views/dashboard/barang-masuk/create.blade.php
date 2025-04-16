@@ -76,7 +76,6 @@
                                 <label>Stok <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <input type="text" id="data_stok" name="stok" class="form-control" readonly>
-                                    <div id="data_satuan" class="input-group-append"></div>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +127,6 @@
                     barang = barang[0]
 
                     $('#data_stok').val(barang.stok)
-                    $('#data_satuan').html('<span class="input-group-text">' + barang.satuan + '</span>')
                     // set focus
                     $('#jumlah').focus()
                 }
