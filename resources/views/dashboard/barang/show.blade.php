@@ -69,6 +69,16 @@
                                     <td>:</td>
                                     <td>{{ $barang->ukuran }} ml</td>
                                 </tr>
+                                <tr>
+                                    <td>Harga Barang</td>
+                                    <td>:</td>
+                                    <td>{{ $barang->harga_barang }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Varian</td>
+                                    <td>:</td>
+                                    <td>{{ $barang->nama_varian }}</td>
+                                </tr>
                             </table>
                         </div>
                     </div>

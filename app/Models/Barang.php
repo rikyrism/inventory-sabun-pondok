@@ -21,6 +21,8 @@ class Barang extends Model
         'stok_minimum',
         'stok',
         'ukuran',
+        'harga_barang',
+        'nama_varian',
     ];
 
     public function barang_masuks(): HasMany

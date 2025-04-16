@@ -85,6 +85,29 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label>Harga Barang <span class="text-danger">*</span></label>
+                                <input type="number" name="harga_barang" class="form-control" autocomplete="off" required>
+                                <div class="invalid-feedback">Harga barang tidak boleh kosong.</div>
+                                @error('harga_barang')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nama Varian <span class="text-danger">*</span></label>
+                                <input type="text" name="nama_varian" class="form-control" autocomplete="off" required>
+                                <div class="invalid-feedback">Nama varian tidak boleh kosong.</div>
+                                @error('nama_varian')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-action">
