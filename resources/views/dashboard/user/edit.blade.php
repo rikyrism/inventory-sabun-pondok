@@ -25,7 +25,7 @@
                 <div class="card-title">Ubah Data User</div>
             </div>
             <!-- form entri data -->
-            <form action="{{ route('user.update', $user->id) }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('user.update', $user->id_user) }}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 @method('put')
                 <div class="card-body">
