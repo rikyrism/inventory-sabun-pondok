@@ -123,6 +123,8 @@
                                     <th class="text-center">ID Keluar</th>
                                     <th class="text-center">Tanggal</th>
                                     <th class="text-center">Barang</th>
+                                    <th class="text-center">Harga Barang</th>
+                                    <th class="text-center">Varian</th>
                                     <th class="text-center">Jumlah Keluar</th>
                                     <th class="text-center">Ukuran</th>
                                     <th class="text-center">Penerima Keluar</th>
@@ -135,7 +137,9 @@
                                         <td width="50" class="text-center">{{ $index + 1 }}</td>
                                         <td width="100" class="text-center">{{ $item->id_keluar }}</td>
                                         <td width="200" class="text-center">{{ date('d-m-Y', strtotime($item->nama_barang)) }}</td>
-                                        <td width="200" class="text-center">{{ $item->barangTable->unique_id }} - {{ $item->barangTable->nama_barang }}</td>
+                                        <td width="200" class="text-center">{{ $item->barangTable->id_barang }} - {{ $item->barangTable->nama_barang }}</td>
+                                        <td width="100" class="text-center">{{ $item->barangTable->harga_barang }}</td>
+                                        <td width="100" class="text-center">{{ $item->barangTable->nama_varian }}</td>
                                         <td width="100" class="text-center">{{ $item->jumlah }}</td>
                                         <td width="100" class="text-center">{{ $item->barangTable->ukuran }} ml</td>
                                         <td width="100" class="text-center">{{ $item->penerima_keluar }}</td>
