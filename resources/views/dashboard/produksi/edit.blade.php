@@ -37,12 +37,6 @@
                                 <!-- tampilkan "id_barang" -->
                                 <input type="text" class="form-control" value="{{ $produksi->id_produksi }}" readonly>
                             </div>
-                            <div class="form-group">
-                                <label>ID Barang <span class="text-danger">*</span></label>
-                                <!-- tampilkan "id_barang" -->
-                                <input type="text" class="form-control" value="{{ $produksi->barangTable->id_barang }}" readonly>
-                            </div>
-
 
                             <div class="form-group">
                                 <label>Nama Barang <span class="text-danger">*</span></label>

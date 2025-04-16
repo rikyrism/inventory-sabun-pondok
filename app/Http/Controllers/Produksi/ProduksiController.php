@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Produksi;
 
 use App\Http\Controllers\Controller;
 use App\Models\Produksi;
-use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -37,10 +36,8 @@ class ProduksiController extends Controller
     public function create(): View
     {
         $unique_id = $this->service->getUniqueId();
-        $barangs = Barang::get();
         return view('dashboard.produksi.create', [
             'unique_id' => $unique_id,
-            'barangs' => $barangs,
         ]);
     }
 

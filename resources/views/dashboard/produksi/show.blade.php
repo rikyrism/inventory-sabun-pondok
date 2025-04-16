@@ -45,11 +45,6 @@
                                 <td>{{ $produksi->id_produksi }}</td>
                             </tr>
                             <tr>
-                                <td width="120">ID Barang</td>
-                                <td width="10">:</td>
-                                <td>{{ $produksi->barangTable->id_barang }}</td>
-                            </tr>
-                            <tr>
                                 <td>Nama Barang</td>
                                 <td>:</td>
                                 <td>{{ $produksi->nama_barang }}</td>

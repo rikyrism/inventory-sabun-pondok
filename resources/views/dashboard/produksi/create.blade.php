@@ -38,22 +38,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Barang <span class="text-danger">*</span></label>
-                                <select id="barang_id" name="id_barang" class="form-control chosen-select" autocomplete="off" required>
-                                    <option selected disabled value="">-- Pilih --</option>
-                                    @foreach ($barangs as $item)
-                                        <option value="{{ $item->id_barang }}">{{ $item->id_barang }} - {{ $item->nama_barang }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="invalid-feedback">Barang tidak boleh kosong.</div>
-                                @error('barang_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
                                 <label>Nama Barang <span class="text-danger">*</span></label>
                                 <input type="text" name="nama_barang" class="form-control" autocomplete="off" required>
                                 <div class="invalid-feedback">Nama barang tidak boleh kosong.</div>

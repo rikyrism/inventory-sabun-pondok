@@ -16,16 +16,10 @@ class Produksi extends Model
 
     protected $fillable = [
         'id_produksi',
-        'id_barang',
         'nama_barang',
         'satuan',
         'tanggal',
         'jumlah',
         'status',
     ];
-
-    public function barangTable(): BelongsTo
-    {
-        return $this->belongsTo(Barang::class, 'id_barang', 'id_barang');
-    }
 }

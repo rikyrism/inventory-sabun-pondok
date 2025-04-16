@@ -23,7 +23,6 @@ class ProduksiStoreRequest extends FormRequest
     {
         return [
             'id_produksi' => ['required'],
-            'id_barang' => ['required', 'exists:tbl_barang,id_barang'],
             'nama_barang' => ['required', 'string', 'min:1', 'max:50'],
             'satuan' => ['required', 'string', 'min:1', 'max:10'],
             'tanggal' => ['required', 'date'],
