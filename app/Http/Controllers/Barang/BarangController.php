@@ -48,9 +48,27 @@ class BarangController extends Controller
      */
     public function store(BarangStoreRequest $request): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->store($input);
-        return redirect()->route('barang.index')->withSuccess("Data $this->name berhasil disimpan.");
+        try {
+            $input = $request->validated();
+            $this->service->store($input);
+            
+            // Tambahkan notifikasi di session
+            return redirect()->route('barang.index')
+                ->with('success', "Data Barang {$input['nama_barang']} berhasil disimpan.")
+                ->with('notification', [
+                    'message' => "Barang {$input['nama_barang']} berhasil ditambahkan",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->route('barang.create')
+                ->withInput()
+                ->with('error', "Data Barang {$request->nama_barang} Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->route('barang.create')
+                ->withInput()
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -81,9 +99,25 @@ class BarangController extends Controller
      */
     public function update(BarangUpdateRequest $request, Barang $barang): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->update($input, $barang);
-        return redirect()->route('barang.index')->withSuccess("Data $this->name berhasil diubah.");
+        try {
+            $input = $request->validated();
+            $this->service->update($input, $barang);
+            return redirect()->route('barang.index')
+                ->with('success', "Data Barang {$input['nama_barang']} berhasil diubah.")
+                ->with('notification', [
+                    'message' => "Barang {$input['nama_barang']} berhasil diubah",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Nama Barang ({$request->nama_barang}) Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -93,9 +127,21 @@ class BarangController extends Controller
     {
         $data = $this->service->destroy($barang);
         if ($data) {
-            return redirect()->route('barang.index')->withSuccess("Data $this->name berhasil dihapus.");
+            return redirect()->route('barang.index')
+                ->with('success', "Data Barang {$barang->nama_barang} berhasil dihapus.")
+                ->with('notification', [
+                    'message' => "Barang {$barang->nama_barang} berhasil dihapus",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
         } else {
-            return redirect()->route('barang.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+            return redirect()->route('barang.index')
+                ->with('error', "Data Barang {$barang->nama_barang} tidak bisa dihapus karena sudah tercatat pada Data Transaksi.")
+                ->with('notification', [
+                    'message' => "Barang {$barang->nama_barang} tidak dapat dihapus karena terdapat di transaksi",
+                    'type' => 'danger',
+                    'category' => 'Master'
+                ]);
         }
     }
 }

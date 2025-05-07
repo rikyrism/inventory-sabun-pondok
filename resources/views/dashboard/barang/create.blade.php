@@ -121,4 +121,19 @@
         </div>
     </div>
     @endif
+    
+    @if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure jQuery is loaded before trying to use it
+            if (typeof $ !== 'undefined') {
+                showDuplicatePopup("{{ session('error') }}");
+            } else {
+                console.error('jQuery is not loaded properly');
+                // Fallback alert if jQuery isn't loaded
+                alert("Error: {{ session('error') }}");
+            }
+        });
+    </script>
+    @endif
 @endsection

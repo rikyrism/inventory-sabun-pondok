@@ -23,11 +23,23 @@ class ProduksiStoreRequest extends FormRequest
     {
         return [
             'id_produksi' => ['required'],
-            'nama_barang' => ['required', 'string', 'min:1', 'max:50'],
+            'nama_barang' => ['required', 'string', 'min:1', 'max:50', 'unique:tbl_produksi,nama_barang'],
             'satuan' => ['required', 'string', 'min:1', 'max:10'],
             'tanggal' => ['required', 'date'],
             'jumlah' => ['required', 'integer', 'min:-2147483648', 'max:2147483647'],
             'status' => ['required', 'string', 'min:1', 'max:10']
+        ];
+    }
+    
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_barang.unique' => 'Produksi (:input) Sudah Ada!',
         ];
     }
 }

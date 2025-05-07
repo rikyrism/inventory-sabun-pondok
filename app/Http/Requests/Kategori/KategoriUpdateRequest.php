@@ -22,7 +22,24 @@ class KategoriUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_kategori' => ['sometimes', 'string', 'min:1']
+            'nama_kategori' => [
+                'sometimes', 
+                'string', 
+                'min:1', 
+                'unique:tbl_kategori,nama_kategori,' . $this->route('kategori')->id_kategori . ',id_kategori'
+            ]
+        ];
+    }
+    
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_kategori.unique' => 'Nama Kategori (:input) Sudah Ada!',
         ];
     }
 }

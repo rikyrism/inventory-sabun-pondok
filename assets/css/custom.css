@@ -1,0 +1,145 @@
+/* Responsive table styling */
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin-bottom: 1rem;
+}
+
+/* Ensure tables are properly scrollable on mobile */
+
+.table-responsive,
+div[style*="overflow-x: auto"] {
+    -webkit-overflow-scrolling: touch;
+    /* For smoother scrolling on iOS devices */
+}
+
+/* Force minimum width on mobile to prevent squeezing */
+
+@media screen and (max-width: 767px) {
+    .table-responsive table {
+        min-width: 500px;
+    }
+    #dataTable {
+        min-width: 650px;
+        /* Adjust this value based on your table content */
+    }
+    .table-responsive .btn {
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+    .btn + .btn {
+        margin-left: 5px;
+    }
+}
+
+/* Table horizontal scrolling for mobile */
+
+.table-container {
+    position: relative;
+    width: 100%;
+}
+
+.table-horizontal-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+/* Ensure table doesn't get squished on mobile */
+
+.table-horizontal-scroll table {
+    width: 100%;
+    margin: 0;
+    min-width: 650px;
+    /* Force minimum width to ensure horizontal scroll on mobile */
+}
+
+/* Improve appearance of scroll bar */
+
+.table-horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-horizontal-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-horizontal-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.table-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Button spacing in action column */
+
+.btn + .btn {
+    margin-left: 4px;
+}
+
+/* Responsive adjustments */
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        margin: 0 -10px;
+        /* Compensate for any padding in the parent container */
+    }
+}
+
+/* Custom table responsive class to ensure horizontal scrolling works */
+
+.table-responsive-custom {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    display: block;
+}
+
+/* Ensure tables don't shrink too much on mobile */
+
+@media screen and (max-width: 767px) {
+    .table-responsive-custom table {
+        min-width: 650px;
+    }
+}
+
+/* Mobile notification styles */
+
+@media (max-width: 767px) {
+    .dropdown-list {
+        position: absolute;
+        width: 20rem;
+        right: 0;
+        left: auto;
+        z-index: 1000;
+    }
+    .icon-circle {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Adjust topbar spacing */
+    .topbar .nav-item .nav-link {
+        padding: 0.5rem;
+    }
+    /* Hide notification on desktop since we're only showing it on mobile */
+    @media (min-width: 768px) {
+        .d-sm-none.d-flex.align-items-center {
+            display: none !important;
+        }
+    }
+}

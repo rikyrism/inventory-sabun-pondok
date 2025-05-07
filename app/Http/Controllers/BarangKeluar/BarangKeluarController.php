@@ -48,8 +48,15 @@ class BarangKeluarController extends Controller
     public function store(BarangKeluarStoreRequest $request): RedirectResponse
     {
         $input = $request->validated();
+        $barang = Barang::find($input['barang']);
         $this->service->store($input);
-        return redirect()->route('barang-keluar.index')->withSuccess("Data $this->name berhasil disimpan.");
+        return redirect()->route('barang-keluar.index')
+            ->with('success', "Data Barang Keluar {$barang->nama_barang} ({$input['jumlah']} pcs) berhasil disimpan.")
+            ->with('notification', [
+                'message' => "Barang Keluar {$barang->nama_barang} ({$input['jumlah']} pcs) berhasil ditambahkan",
+                'type' => 'success',
+                'category' => 'Transaksi'
+            ]);
     }
 
     /**
@@ -57,11 +64,26 @@ class BarangKeluarController extends Controller
      */
     public function destroy(BarangKeluar $barangKeluar): RedirectResponse
     {
+        // Get the barang name before deleting
+        $nama_barang = $barangKeluar->barangTable->nama_barang ?? 'Unknown';
+        
         $data = $this->service->destroy($barangKeluar);
         if ($data) {
-            return redirect()->route('barang-keluar.index')->withSuccess("Data $this->name berhasil dihapus.");
+            return redirect()->route('barang-keluar.index')
+                ->with('success', "Data Barang Keluar {$nama_barang} berhasil dihapus.")
+                ->with('notification', [
+                    'message' => "Barang Keluar {$nama_barang} berhasil dihapus",
+                    'type' => 'success',
+                    'category' => 'Transaksi'
+                ]);
         } else {
-            return redirect()->route('barang-keluar.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+            return redirect()->route('barang-keluar.index')
+                ->with('error', "Data Barang Keluar {$nama_barang} tidak bisa dihapus karena sudah tercatat pada Data Transaksi.")
+                ->with('notification', [
+                    'message' => "Barang Keluar {$nama_barang} tidak dapat dihapus",
+                    'type' => 'danger',
+                    'category' => 'Transaksi'
+                ]);
         }
     }
 }

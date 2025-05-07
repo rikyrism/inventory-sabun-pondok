@@ -45,4 +45,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', Controllers\User\UserController::class)->except('show');
     Route::get('change-password', [Controllers\Auth\AuthController::class, 'changePassword'])->name('profile.change-password');
     Route::post('update-password', [Controllers\Auth\AuthController::class, 'updatePassword'])->name('profile.update-password');
+    
+    // Routes untuk notifikasi
+    Route::prefix('notification')->name('notification.')->group(function() {
+        Route::get('/', [Controllers\NotificationController::class, 'getNotifications'])->name('get');
+        Route::delete('/clear', [Controllers\NotificationController::class, 'clearNotifications'])->name('clear');
+    });
 });

@@ -37,12 +37,28 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('dashboard.laporan.stok.exports.export-pdf', compact('barangs'));
         $pdf->setOption(['isRemoteEnabled' => true]);
         $fileName = 'Laporan Stok - '. (string) time(). '.pdf';
+        
+        // Add notification data to session
+        session()->flash('notification', [
+            'message' => "Laporan Stok Barang berhasil diunduh",
+            'type' => 'success',
+            'category' => 'Laporan'
+        ]);
+        
         return $pdf->download($fileName);
     }
 
-    public function  laporanStokExportExcel()
+    public function laporanStokExportExcel()
     {
         $fileName = 'Laporan Stok - '. (string) time(). '.xlsx';
+        
+        // Add notification data to session
+        session()->flash('notification', [
+            'message' => "Laporan Stok Barang (Excel) berhasil diunduh",
+            'type' => 'success',
+            'category' => 'Laporan'
+        ]);
+        
         return Excel::download(new BarangExport, $fileName);
     }
 
@@ -68,6 +84,14 @@ class LaporanController extends Controller
             $pdf = Pdf::loadView('dashboard.laporan.barang-masuk.exports.export-pdf', compact('barang_masuks', 'tanggal_awal', 'tanggal_akhir'));
             $pdf->setOption(['isRemoteEnabled' => true]);
             $fileName = 'Laporan Data Barang Masuk - '. (string) time(). '.pdf';
+            
+            // Add notification data to session
+            session()->flash('notification', [
+                'message' => "Laporan Barang Masuk periode $tanggal_awal s/d $tanggal_akhir berhasil diunduh",
+                'type' => 'success',
+                'category' => 'Laporan'
+            ]);
+            
             return $pdf->download($fileName);
         }
     }
@@ -79,6 +103,14 @@ class LaporanController extends Controller
 
         if (isset($start_date) and isset($end_date)) {
             $fileName = 'Laporan Data Barang Masuk - '. (string) time(). '.xlsx';
+            
+            // Add notification data to session
+            session()->flash('notification', [
+                'message' => "Laporan Barang Masuk (Excel) periode $start_date s/d $end_date berhasil diunduh",
+                'type' => 'success',
+                'category' => 'Laporan'
+            ]);
+            
             return Excel::download(new BarangMasukExport($start_date, $end_date), $fileName);
         }
     }
@@ -106,6 +138,14 @@ class LaporanController extends Controller
             $pdf = Pdf::loadView('dashboard.laporan.barang-keluar.exports.export-pdf', compact('barang_keluars', 'tanggal_awal', 'tanggal_akhir'));
             $pdf->setOption(['isRemoteEnabled' => true]);
             $fileName = 'Laporan Data Barang Keluar - '. (string) time(). '.pdf';
+            
+            // Add notification data to session
+            session()->flash('notification', [
+                'message' => "Laporan Barang Keluar periode $tanggal_awal s/d $tanggal_akhir berhasil diunduh",
+                'type' => 'success',
+                'category' => 'Laporan'
+            ]);
+            
             return $pdf->download($fileName);
         }
     }
@@ -117,6 +157,14 @@ class LaporanController extends Controller
 
         if (isset($start_date) and isset($end_date)) {
             $fileName = 'Laporan Data Barang Keluar - '. (string) time(). '.xlsx';
+            
+            // Add notification data to session
+            session()->flash('notification', [
+                'message' => "Laporan Barang Keluar (Excel) periode $start_date s/d $end_date berhasil diunduh",
+                'type' => 'success',
+                'category' => 'Laporan'
+            ]);
+            
             return Excel::download(new BarangKeluarExport($start_date, $end_date), $fileName);
         }
     }

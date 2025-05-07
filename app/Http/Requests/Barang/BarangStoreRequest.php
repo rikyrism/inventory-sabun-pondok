@@ -24,11 +24,23 @@ class BarangStoreRequest extends FormRequest
         return [
             'id_barang' => ['required'],
             'kategori' => ['required', 'exists:tbl_kategori,id_kategori'],
-            'nama_barang' => ['required', 'string', 'min:1', 'max:50'],
+            'nama_barang' => ['required', 'string', 'min:1', 'max:50', 'unique:tbl_barang,nama_barang'],
             'stok_minimum' => ['required', 'integer', 'min:-2147483648', 'max:2147483647'],
             'ukuran' => ['required'],
             'harga_barang' => ['required'],
             'nama_varian' => ['required'],
+        ];
+    }
+    
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_barang.unique' => 'Nama Barang (:input) Sudah Ada!',
         ];
     }
 }

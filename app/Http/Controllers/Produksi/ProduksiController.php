@@ -46,9 +46,26 @@ class ProduksiController extends Controller
      */
     public function store(ProduksiStoreRequest $request): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->store($input);
-        return redirect()->route('produksi.index')->withSuccess("Data $this->name berhasil disimpan.");
+        try {
+            $input = $request->validated();
+            $this->service->store($input);
+            
+            return redirect()->route('produksi.index')
+                ->with('success', "Data $this->name berhasil disimpan.")
+                ->with('notification', [
+                    'message' => "Produksi ({$input['nama_barang']}) Berhasil",
+                    'type' => 'success',
+                    'category' => 'Produksi'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Produksi ({$request->nama_barang}) Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -76,9 +93,25 @@ class ProduksiController extends Controller
      */
     public function update(ProduksiUpdateRequest $request, Produksi $produksi): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->update($input, $produksi);
-        return redirect()->route('produksi.index')->withSuccess("Data $this->name berhasil diubah.");
+        try {
+            $input = $request->validated();
+            $this->service->update($input, $produksi);
+            return redirect()->route('produksi.index')
+                ->with('success', "Data $this->name berhasil diubah.")
+                ->with('notification', [
+                    'message' => "Produksi ({$input['nama_barang']}) Berhasil",
+                    'type' => 'success',
+                    'category' => 'Produksi'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Produksi ({$request->nama_barang}) Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -87,10 +120,24 @@ class ProduksiController extends Controller
     public function destroy(Produksi $produksi): RedirectResponse
     {
         $data = $this->service->destroy($produksi);
+        $namaBarang = $produksi->nama_barang;
+        
         if ($data) {
-            return redirect()->route('produksi.index')->withSuccess("Data $this->name berhasil dihapus.");
+            return redirect()->route('produksi.index')
+                ->with('success', "Data $this->name berhasil dihapus.")
+                ->with('notification', [
+                    'message' => "Produksi ({$namaBarang}) Berhasil Dihapus",
+                    'type' => 'success',
+                    'category' => 'Produksi'
+                ]);
         } else {
-            return redirect()->route('produksi.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+            return redirect()->route('produksi.index')
+                ->with('error', "Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.")
+                ->with('notification', [
+                    'message' => "Produksi ({$namaBarang}) Tidak Dapat Dihapus",
+                    'type' => 'danger',
+                    'category' => 'Produksi'
+                ]);
         }
     }
 }

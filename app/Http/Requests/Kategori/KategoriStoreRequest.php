@@ -23,7 +23,19 @@ class KategoriStoreRequest extends FormRequest
     {
         return [
             'id_kategori' => ['required'],
-            'nama_kategori' => ['required', 'string', 'min:1']
+            'nama_kategori' => ['required', 'string', 'min:1', 'unique:tbl_kategori,nama_kategori']
+        ];
+    }
+    
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'nama_kategori.unique' => 'Nama Kategori (:input) Sudah Ada!',
         ];
     }
 }

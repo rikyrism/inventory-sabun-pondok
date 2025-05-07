@@ -59,4 +59,13 @@
         </div>
     </div>
     @endif
+    
+    @if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Use the duplicate notification type specifically for duplicate data errors
+            showDuplicatePopup("{{ session('error') }}");
+        });
+    </script>
+    @endif
 @endsection

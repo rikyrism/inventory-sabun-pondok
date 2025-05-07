@@ -35,11 +35,104 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/atlantis.min.css') }}">
+    
+    <!-- Notification CSS -->
+    <style>
+        .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #67c963; /* Default hijau */
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 20px;
+        }
+        
+        .notif-icon {
+            min-width: 40px; /* Menggunakan min-width untuk mencegah penyusutan ikon */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0; /* Mencegah ikon mengecil saat teks panjang */
+        }
+        
+        .notif-content {
+            flex: 1;
+            word-break: break-word; /* Membuat teks panjang turun ke baris berikutnya */
+            min-width: 0; /* Membantu flex container beradaptasi dengan konten yang panjang */
+        }
+        
+        .notif-center .dropdown-item {
+            display: flex;
+            align-items: flex-start; /* Menyelaraskan item ke atas untuk teks multi-baris */
+            padding: 15px;
+            border-bottom: 1px solid #ebedf2;
+            white-space: normal; /* Memungkinkan teks untuk wrap */
+        }
+        
+        /* Memastikan block di dalam notif-content tidak membuat container terlalu lebar */
+        .notif-content .block {
+            display: block;
+            word-break: break-word;
+        }
+        
+        .notif-box {
+            width: 350px;
+            max-height: 450px;
+        }
+        
+        .notif-scroll {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        
+        .notif-center .dropdown-item.active {
+            background-color: #f8faf8;
+        }
+        
+        .notif-center .dropdown-item:hover {
+            background-color: #edf7ee;
+        }
+        
+        .dropdown-title {
+            border-bottom: 1px solid #ebedf2;
+            padding: 15px;
+            font-weight: bold;
+        }
+        
+        /* Override warna default untuk class Bootstrap */
+        .bg-success, .bg-primary, .bg-info {
+            background-color: #67c963 !important;
+        }
+        
+        .bg-danger {
+            background-color: #f25961 !important;
+        }
+        
+        /* Tambahkan class spesifik untuk notifikasi */
+        .notif-add {
+            background-color: #67c963 !important;
+        }
+        
+        .notif-delete {
+            background-color: #f25961 !important;
+        }
+    </style>
+    
     <!-- jQuery Core -->
     <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
 </head>
 
-<body>
+<body data-user-role="{{ auth()->user()->role }}">
     <div class="wrapper">
         <div class="main-header">
             <!-- Logo Header -->
@@ -90,6 +183,9 @@
             </div>
         </div>
     </div>
+    
+    <!-- Include Pop-up Notification Components -->
+    @include('components.popup-notification')
 
     <!-- Core JS Files -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
@@ -110,6 +206,58 @@
     <!-- Custom Scripts -->
     <script src="{{ asset('assets/js/plugin.js') }}"></script>
     <script src="{{ asset('assets/js/form-validation.js') }}"></script>
+    <!-- Notification System -->
+    <script src="{{ asset('assets/js/notification.js') }}"></script>
+    <script src="{{ asset('assets/js/popup-notification.js') }}"></script>
+    
+    @if(session('notification'))
+    <script>
+        // Transfer notification from session to localStorage notification system
+        $(document).ready(function() {
+            // Wait for notification system to initialize
+            setTimeout(function() {
+                const notification = @json(session('notification'));
+                if (notification && window.addNotification) {
+                    addNotification(notification.message, notification.type, notification.category);
+                }
+            }, 100);
+        });
+    </script>
+    @endif
+    
+    @if(session('success'))
+    <script>
+        // Show success popup for flash messages
+        $(document).ready(function() {
+            showSuccessPopup("{{ session('success') }}");
+        });
+    </script>
+    @endif
+    
+    @if(session('error'))
+    <script>
+        // Show error popup for flash messages
+        $(document).ready(function() {
+            showErrorPopup("{{ session('error') }}");
+        });
+    </script>
+    @endif
+    
+    @if(session('just_logged_in'))
+    <script>
+        // Tampilkan popup selamat datang dengan warna dan ikon khusus
+        $(document).ready(function() {
+            // Tampilkan popup selamat datang dengan nama pengguna
+            showSuccessPopup("{{ session('welcome_message') }}", "Selamat Datang!");
+            
+            // Hapus flag session agar popup tidak muncul lagi setelah refresh
+            @php
+                session()->forget(['just_logged_in', 'welcome_message']);
+            @endphp
+        });
+    </script>
+    @endif
+    
     @stack('scripts')
 </body>
 </html>

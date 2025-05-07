@@ -45,7 +45,13 @@ class UserController extends Controller
     {
         $input = $request->validated();
         $this->service->store($input);
-        return redirect()->route('user.index')->withSuccess("Data $this->name berhasil disimpan.");
+        return redirect()->route('user.index')
+            ->withSuccess("Data $this->name berhasil disimpan.")
+            ->with('notification', [
+                'message' => "User {$input['nama_user']} berhasil ditambahkan",
+                'type' => 'success',
+                'category' => 'Pengaturan'
+            ]);
     }
 
     /**
@@ -68,7 +74,13 @@ class UserController extends Controller
         $input = $request->validated();
         \Log::info('update user: '. json_encode($input));
         $this->service->update($input, $user);
-        return redirect()->route('user.index')->withSuccess("Data $this->name berhasil diubah.");
+        return redirect()->route('user.index')
+            ->withSuccess("Data $this->name berhasil diubah.")
+            ->with('notification', [
+                'message' => "User {$input['nama_user']} berhasil diubah",
+                'type' => 'success',
+                'category' => 'Pengaturan'
+            ]);
     }
 
     /**
@@ -80,9 +92,21 @@ class UserController extends Controller
 
         $data = $this->service->destroy($user);
         if ($data) {
-            return redirect()->route('user.index')->withSuccess("Data $this->name berhasil dihapus.");
+            return redirect()->route('user.index')
+                ->withSuccess("Data $this->name berhasil dihapus.")
+                ->with('notification', [
+                    'message' => "User {$user->nama_user} berhasil dihapus",
+                    'type' => 'success',
+                    'category' => 'Pengaturan'
+                ]);
         } else {
-            return redirect()->route('user.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+            return redirect()->route('user.index')
+                ->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.")
+                ->with('notification', [
+                    'message' => "User {$user->nama_user} tidak dapat dihapus",
+                    'type' => 'danger',
+                    'category' => 'Pengaturan'
+                ]);
         }
     }
 }

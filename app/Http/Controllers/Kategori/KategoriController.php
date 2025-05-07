@@ -47,9 +47,23 @@ class KategoriController extends Controller
      */
     public function store(KategoriStoreRequest $request): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->store($input);
-        return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil disimpan.");
+        try {
+            $input = $request->validated();
+            $this->service->store($input);
+            return redirect()->route('kategori.index')
+                ->with('success', "Data Kategori {$input['nama_kategori']} berhasil disimpan.")
+                ->with('notification', [
+                    'message' => "Kategori {$input['nama_kategori']} berhasil ditambahkan",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->route('kategori.index')
+                ->with('error', "Data Kategori {$request->nama_kategori} Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->route('kategori.index')
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -77,9 +91,25 @@ class KategoriController extends Controller
      */
     public function update(KategoriUpdateRequest $request, Kategori $kategori): RedirectResponse
     {
-        $input = $request->validated();
-        $this->service->update($input, $kategori);
-        return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil diubah.");
+        try {
+            $input = $request->validated();
+            $this->service->update($input, $kategori);
+            return redirect()->route('kategori.index')
+                ->with('success', "Data Kategori {$input['nama_kategori']} berhasil diubah.")
+                ->with('notification', [
+                    'message' => "Kategori {$input['nama_kategori']} berhasil diubah",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Nama Kategori ({$request->nama_kategori}) Sudah Ada!");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', "Terjadi kesalahan: " . $e->getMessage());
+        }
     }
 
     /**
@@ -89,9 +119,21 @@ class KategoriController extends Controller
     {
         $data = $this->service->destroy($kategori);
         if ($data) {
-            return redirect()->route('kategori.index')->withSuccess("Data $this->name berhasil dihapus.");
+            return redirect()->route('kategori.index')
+                ->with('success', "Data Kategori {$kategori->nama_kategori} berhasil dihapus.")
+                ->with('notification', [
+                    'message' => "Kategori {$kategori->nama_kategori} berhasil dihapus",
+                    'type' => 'success',
+                    'category' => 'Master'
+                ]);
         } else {
-            return redirect()->route('kategori.index')->withError("Data $this->name tidak bisa dihapus karena sudah tercatat pada Data Transaksi.");
+            return redirect()->route('kategori.index')
+                ->with('error', "Data Kategori {$kategori->nama_kategori} tidak bisa dihapus karena sudah tercatat pada Data Transaksi.")
+                ->with('notification', [
+                    'message' => "Kategori {$kategori->nama_kategori} tidak dapat dihapus karena terdapat di transaksi",
+                    'type' => 'danger',
+                    'category' => 'Master'
+                ]);
         }
     }
 }

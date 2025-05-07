@@ -28,7 +28,9 @@ class AuthController extends Controller
 
         \Log::debug($input);
         if (Auth::attempt($input)) {
-            return redirect()->intended('dashboard')->withSuccess('Selamat Datang di Aplikasi Persediaan Barang CV Sabun Pondok.');
+            // Simpan flag bahwa user baru login untuk menampilkan popup welcome
+            session(['just_logged_in' => true, 'welcome_message' => 'Selamat Datang ' . Auth::user()->nama_user]);
+            return redirect()->intended('dashboard');
         } else {
             return redirect(route('auth.index'))->withError('Email atau Password salah. Cek kembali Email dan Password Anda.');
         }

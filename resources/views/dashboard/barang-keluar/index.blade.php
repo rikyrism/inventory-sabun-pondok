@@ -1,26 +1,6 @@
 @extends('layouts.app')
 @section('content')
     @if (auth()->user()->role === 'Administrator')
-    @session('success')
-        <div class="alert alert-notify alert-secondary alert-dismissible fade show" role="alert">
-            <span data-notify="icon" class="fas fa-check"></span>
-            <span data-notify="title" class="text-secondary">Sukses!</span>
-            <span data-notify="message">{{ $value }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endsession
-    @session('error')
-        <div class="alert alert-notify alert-danger alert-dismissible fade show" role="alert">
-            <span data-notify="icon" class="fas fa-times"></span>
-            <span data-notify="title" class="text-danger">Gagal!</span>
-            <span data-notify="message">{{ $value }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endsession
     <div class="panel-header bg-secondary-gradient">
         <div class="page-inner py-45">
             <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -84,14 +64,14 @@
                                     <td width="100" class="text-center">
                                         <div>
                                             <!-- tombol hapus data -->
-                                            <form action="{{ route('barang-keluar.destroy', $item->id_keluar) }}" method="POST" style="display:none;">
+                                            <form action="{{ route('barang-keluar.destroy', $item->id_keluar) }}" method="POST" style="display:none;" data-item-name="{{ $item->barangTable->nama_barang }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id_keluar}}">Delete</button>
                                             </form>
 
                                             <a href="#"
-                                                onclick="if (confirm('Anda yakin ingin menghapus data barang keluar {{ $item->barangTable->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id_keluar}}').click(); }"
+                                                onclick="event.preventDefault(); showDeleteConfirmPopup('Anda yakin ingin menghapus data barang keluar {{ $item->barangTable->nama_barang }}?', function() { document.getElementById('delete-data-{{$item->id_keluar}}').click(); });"
                                                 class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip"
                                                 data-placement="top" title="Hapus"
                                             >

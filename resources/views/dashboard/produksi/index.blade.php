@@ -1,25 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @session('success')
-        <div class="alert alert-notify alert-secondary alert-dismissible fade show" role="alert">
-            <span data-notify="icon" class="fas fa-check"></span>
-            <span data-notify="title" class="text-secondary">Sukses!</span>
-            <span data-notify="message">{{ $value }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endsession
-    @session('error')
-        <div class="alert alert-notify alert-danger alert-dismissible fade show" role="alert">
-            <span data-notify="icon" class="fas fa-times"></span>
-            <span data-notify="title" class="text-danger">Gagal!</span>
-            <span data-notify="message">{{ $value }}</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endsession
+    {{-- Removed top popup notifications to avoid duplicate with the notification system --}}
     <div class="panel-header bg-secondary-gradient">
         <div class="page-inner py-45">
             <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -96,14 +77,14 @@
                                                     <i class="fas fa-pencil-alt fa-sm"></i>
                                                 </a>
                                                 <!-- tombol hapus data -->
-                                                <form action="{{ route('produksi.destroy', $item->id_produksi) }}" method="POST" style="display:none;">
+                                                <form action="{{ route('produksi.destroy', $item->id_produksi) }}" method="POST" style="display:none;" data-item-name="{{ $item->nama_barang }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" id="delete-data-{{$item->id_produksi}}">Delete</button>
                                                 </form>
 
                                                 <a href="#"
-                                                    onclick="if (confirm('Anda yakin ingin menghapus data produksi {{ $item->nama_barang }}?')) { document.getElementById('delete-data-{{$item->id_produksi}}').click(); }"
+                                                    onclick="event.preventDefault(); showDeleteConfirmPopup('Anda yakin ingin menghapus data produksi {{ $item->nama_barang }}?', function() { document.getElementById('delete-data-{{$item->id_produksi}}').click(); });"
                                                     class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip"
                                                     data-placement="top" title="Hapus"
                                                 >

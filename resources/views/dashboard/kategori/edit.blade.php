@@ -59,4 +59,13 @@
         </div>
     </div>
     @endif
+    
+    @if(session('error'))
+    <script>
+        // Tampilkan popup error duplikat dengan simbol silang merah
+        $(document).ready(function() {
+            showDuplicatePopup("{{ session('error') }}");
+        });
+    </script>
+    @endif
 @endsection
